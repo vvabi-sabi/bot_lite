@@ -4,7 +4,7 @@
 ```
 git clone https://github.com/BelotserkovskiyVA/bot_lite.git
 cd bot_lite/
-pip install r requirements.txt
+pip install -r requirements.txt
 ```
 ## 2. Set a BOT_TOKEN into config.py
 
