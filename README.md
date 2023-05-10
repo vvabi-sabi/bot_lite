@@ -1,4 +1,4 @@
-# Yolov5 telegram bot
+# Yolov5 telegram bot lite
 # Install instruction
 ## 1. Install the Telegram-YOLO
 ```
@@ -6,7 +6,7 @@ git clone https://github.com/BelotserkovskiyVA/bot_lite.git
 cd bot_lite/
 pip install r requirements.txt
 ```
-## 2. set a BOT_TOKEN into config.py
+## 2. Set a BOT_TOKEN into config.py
 
 ```
 BOT_TOKEN = '12345:abcde' #Your_token
@@ -15,7 +15,7 @@ BOT_TOKEN = '12345:abcde' #Your_token
 ```
 git clone https://github.com/ultralytics/yolov5.git
 ```
-## 4. make changes to programs:  
+## 4. Make changes to programs:  
 ```
 cp yolov5m_leaky.pt yolov5/yolov5m_leaky.pt
 cd yolov5/
