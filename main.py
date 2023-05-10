@@ -3,11 +3,12 @@ import threading
 import telebot
 import requests
 
-#from dialog_manager import config
+import config
 from dialog_manager.screens import ScreenManager
 from dialog_manager.bot_utils import File
 
 TG_TOKEN = os.getenv("BoT_TOKEN")
+#TG_TOKEN = config.BOT_TOKEN
 
 def run_bot(bot):
     try:
