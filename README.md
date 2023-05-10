@@ -2,7 +2,7 @@
 # Install instruction
 ## 1. Install the Telegram-YOLO
 ```
-git clone https://github.com/BelotserkovskiyVA/tg_yolo.git
+git clone https://github.com/BelotserkovskiyVA/bot_lite.git
 cd bot_lite/
 pip install r requirements.txt
 ```
