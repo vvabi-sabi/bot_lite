@@ -12,7 +12,7 @@ class ScreenManager:
         self.chats_dict = {} # {chat_id: ScreenName}
 
     def current_screen(self, user_id, user_data):
-        # Если команда или файл, мы определяем текущего screen,
+        # Если команда или файл, определяем текущего screen,
         # Если текст, то отдаем текущего screen как есть, а он уже разбирается
         # После ответа на текст, вызывается метод update_screen
         if isinstance(user_data, str):

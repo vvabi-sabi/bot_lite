@@ -3,7 +3,7 @@ import threading
 import telebot
 import requests
 
-from dialog_manager import config
+#from dialog_manager import config
 from dialog_manager.screens import ScreenManager
 from dialog_manager.bot_utils import File
 
