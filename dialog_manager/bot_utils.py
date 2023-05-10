@@ -7,12 +7,12 @@ import json
 import subprocess
 import telebot
 
-import train
-from train import epochs_logger
-import detect
-import export
+import yolov5.train as train
+from yolov5.train import epochs_logger
+import yolov5.detect as detect
+import yolov5.export as export
 
-PRE_PATH = '/root/yolov5_bot_lite'
+PRE_PATH = '/root/bot_lite'
 VALID_DATA_PERCENTAGE = 0.2
 BUSY = False
 
