@@ -26,7 +26,6 @@ git clone --depth 1 --branch v6.0 https://github.com/ultralytics/yolov5.git
 cp yolov5m_leaky.pt yolov5/yolov5m_leaky.pt
 pip install -r yolov5/requirements.txt
 ```
-train_insertion.py -> train.py;
 export_insertion.py -> export.py;
 yolo_insertion.py -> yolo.py;
 ## 5. Start bot
