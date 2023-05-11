@@ -390,7 +390,7 @@ def train_yolo(path):
 def train_info(path):
     current_epoch = epochs_logger.current_epoch(path)
     epochs_number = epochs_logger.epochs_number
-    train_text = f'Количество эпох {current_epoch} из {epochs_number+1}'
+    train_text = f'Количество эпох {current_epoch} из {epochs_number}'
     return train_text
 
 def yolo_detect(path, file_name):
