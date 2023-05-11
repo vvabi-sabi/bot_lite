@@ -333,7 +333,7 @@ def train_yolo(path):
     result_dir = os.path.join(proj_dir,'train')
     data_dir = os.path.join(proj_dir,'dataset')
     config_dir = os.path.join(data_dir,'custom.yaml')
-    model_dir = os.path.join(PRE_PATH, 'models/yolov5m.yaml')
+    model_dir = os.path.join(PRE_PATH, 'yolov5/models/yolov5m.yaml')
     #_, weights = model_scan(path) Всегда начинаем тренировку с 'yolov5m_leaky.pt'
     weights = 'yolov5m_leaky.pt'
     freeze = 10
@@ -415,7 +415,7 @@ def onnx2tmfile(path):
 
 def quantization(path):
     proj_dir = os.path.join(PRE_PATH, str(path))
-    input_img = '/path/to/img_calib'
+    input_img = os.path.join(proj_dir, 'dataset', 'train', 'images') #'/path/to/img_calib'
     
     model_input_path = os.path.join(proj_dir, 'best.tmfile')
     model_output_path = os.path.join(proj_dir, 'best_int8.tmfile')

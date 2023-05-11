@@ -13,7 +13,7 @@ BOT_TOKEN = '12345:abcde' #Your_token
 ```
 ## 3. Install ultralytics/yolov5
 ```
-git clone --depth 1 --branch v5.0 https://github.com/ultralytics/yolov5.git
+git clone --depth 1 --branch v6.0 https://github.com/ultralytics/yolov5.git
 #git clone https://github.com/ultralytics/yolov5.git
 ```
 ## 4. Make changes to programs:  
