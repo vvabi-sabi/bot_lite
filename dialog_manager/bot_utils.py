@@ -17,7 +17,7 @@ BUSY = False
 class EpochsLogger():
     
     def __init__(self):
-        self.epochs_number = 200
+        self.epochs_number = 300
         self.epoch = 0
         self.save_dir = ''
     
