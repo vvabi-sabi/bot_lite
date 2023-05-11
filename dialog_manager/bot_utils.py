@@ -7,14 +7,50 @@ import json
 import subprocess
 import telebot
 
-import yolov5.train as train
-from yolov5.train import epochs_logger
 import yolov5.detect as detect
 import yolov5.export as export
 
 PRE_PATH = '/root/bot_lite'
 VALID_DATA_PERCENTAGE = 0.2
 BUSY = False
+
+class EpochsLogger():
+    
+    def __init__(self):
+        self.epochs_number = 200
+        self.epoch = 0
+        self.save_dir = ''
+    
+    def csv_file(self, chat_id):
+        proj_dir = os.path.join(PRE_PATH, str(chat_id))
+        result_dir = os.path.join(proj_dir,'train')
+        exp = os.listdir(result_dir)
+        if len(exp) == 0:
+            return
+        exp.sort()
+        exp.sort(key=len)
+        if '.ipynb' in exp[-1]:
+            _ = exp.pop()
+        exp = exp[-1]
+        self.save_dir = os.path.join(result_dir, f'{exp}')
+        csv_file = os.path.join(result_dir, f'{exp}', 'results.csv')
+        return csv_file
+
+    def current_epoch(self, chat_id):
+        print('read results.csv')
+        csv_file = self.csv_file(chat_id)
+        with open(csv_file, newline='') as csvfile:
+            log_reader = csv.reader(csvfile, delimiter=',', quotechar='|')
+            for row in log_reader:
+                if row != []:
+                    epoch = row[0]
+        return int(epoch)
+
+    def set_epochs(self, epochs):
+        self.epochs_number = epochs
+
+
+epochs_logger = EpochsLogger()
 
 class File:
     
@@ -340,23 +376,19 @@ def train_yolo(path):
     if len(os.listdir(os.path.join(data_dir,'valid/labels'))) <= 1:
         return 'Добавьте ещё данных. Тренировка не была запущена.', '' # png_path
     BUSY = True
-    opt = train.parse_opt()
-    opt.data = config_dir
-    opt.noautoanchor = True
-    opt.cfg = model_dir
-    opt.weights = weights
-    opt.freeze = freeze
-    opt.batch_size = batch
-    opt.epochs = num_epochs
-    opt.project = result_dir
-    opt.name = 'exp'
-    train.main(opt)
+    savedPath = os.getcwd()
+    os.chdir('/root/bot_lite/yolov5/')
+    command = '/root/bot_lite/yolov5/train.py'
+    params = f'--weights {weights} --data {config_dir} --cfg {model_dir} --batch {batch} --freeze {freeze} --epochs {num_epochs} --project {result_dir}'
+    popen = subprocess.Popen('python3 '+ command +' ' +  params, executable='/bin/bash', shell=True)
+    popen.wait()
+    os.chdir(savedPath)
     BUSY = False
     png_path = os.path.join(epochs_logger.save_dir, 'results.png')
     return 'Обучение закончено. Модель "best.pt" обновилась. \nЧерез минуту я пришлю квантованную модель.', png_path
 
-def train_info():
-    current_epoch = epochs_logger.current_epoch
+def train_info(path):
+    current_epoch = epochs_logger.current_epoch(path)
     epochs_number = epochs_logger.epochs_number
     train_text = f'Количество эпох {current_epoch} из {epochs_number+1}'
     return train_text

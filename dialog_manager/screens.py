@@ -217,13 +217,13 @@ class TrainScreen(ScreenBuilder):
 
     @property
     def info_list(self):
-        time.sleep(5)
+        time.sleep(15)
         info = '...'
         while True:
             if self.train_res is not None:
                 break
             time.sleep(5)
-            new_info = bot_utils.train_info()
+            new_info = bot_utils.train_info(self.chat_id)
             if new_info == info:
                 continue
             info = new_info
