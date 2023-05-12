@@ -4,11 +4,6 @@
 
 <img src="https://github.com/BelotserkovskiyVA/bot_lite/blob/main/images/training_screen.png" width=40% height=40%>   <img src="https://github.com/BelotserkovskiyVA/bot_lite/blob/main/images/result_screen.png" width=40% height=40%>
 
-![start_screen](images/start_screen.png)
-![files_screen](images/files_screen.png)
-![training_screen](images/training_screen.png)
-![result_screen](images/result_screen.png)
-
 # Install instruction
 ## 1. Install the Telegram-YOLO
 ```
