@@ -1,4 +1,4 @@
-# Yolov5 telegram bot lite
+# Yolov5 telegram bot lite (https://t.me/yolov5m_bot)
 
 <img src="https://github.com/BelotserkovskiyVA/bot_lite/blob/main/images/start_screen.png" width=40% height=40%>   <img src="https://github.com/BelotserkovskiyVA/bot_lite/blob/main/images/files_screen.png" width=40% height=40%>
 
