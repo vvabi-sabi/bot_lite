@@ -7,8 +7,8 @@ import config
 from dialog_manager.screens import ScreenManager
 from dialog_manager.bot_utils import File
 
-TG_TOKEN = os.getenv("BoT_TOKEN")
-#TG_TOKEN = config.BOT_TOKEN
+#TG_TOKEN = os.getenv("BoT_TOKEN")
+TG_TOKEN = config.BOT_TOKEN
 
 def run_bot(bot):
     try:
