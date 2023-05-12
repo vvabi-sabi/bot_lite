@@ -1,9 +1,9 @@
 # Yolov5 telegram bot lite
 
-<img src="https://github.com/BelotserkovskiyVA/bot_lite/blob/main/images/start_screen.png" width=30% height=30%> <img src="https://github.com/BelotserkovskiyVA/bot_lite/blob/main/images/files_screen.png" width=30% height=30%>
+<img src="https://github.com/BelotserkovskiyVA/bot_lite/blob/main/images/start_screen.png" width=50% height=50%>   <img src="https://github.com/BelotserkovskiyVA/bot_lite/blob/main/images/files_screen.png" width=50% height=50%>
 
-<img src="https://github.com/BelotserkovskiyVA/bot_lite/blob/main/images/training_screen.png" width=30% height=30%>
-<img src="https://github.com/BelotserkovskiyVA/bot_lite/blob/main/images/result_screen.png" width=30% height=30%>
+<img src="https://github.com/BelotserkovskiyVA/bot_lite/blob/main/images/training_screen.png" width=50% height=50%>   <img src="https://github.com/BelotserkovskiyVA/bot_lite/blob/main/images/result_screen.png" width=50% height=50%>
+
 ![start_screen](images/start_screen.png)
 ![files_screen](images/files_screen.png)
 ![training_screen](images/training_screen.png)
