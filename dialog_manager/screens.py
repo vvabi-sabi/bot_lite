@@ -164,7 +164,7 @@ class AppDownloadScreen(ScreenBuilder):
         super().__init__()
         text = 'Установите это приложение и размечайте файлы в своём мобильном.'
         self._front_face = (text, [('Файлы', 'Тренировка')])
-        self.app_path = '/root/yolov5_bot_lite/dialog_manager/app-release.apk'
+        self.app_path = '/root/bot_lite/dialog_manager/app-release.apk'
     
     def methods_call(self):
         self.next_screen_name = 'StartScreen'
