@@ -69,11 +69,17 @@ class States:
     def __init__(self):
         self.commands = {'/start' : 'StartScreen',
                          '/info' : 'InfoScreen',
+                         '/app' : 'AppDownloadScreen',
                          '/train' : 'TrainScreen',
                          '/group': 'GroupScreen',
                         }
         self.buttons_text = {}
         self.docs = {'jpg' : 'PhotoScreen',
+                     'jpeg' : 'PhotoScreen',
+                     'png' : 'PhotoScreen',
+                     'bmp' : 'PhotoScreen',
+                     'JPG' : 'PhotoScreen',
+                     'JPEG' : 'PhotoScreen',
                      'json' : 'DataScreen',
                      'yaml' : 'DataScreen',
                     }
