@@ -11,6 +11,7 @@ https://t.me/yolov5m_bot
 git clone https://github.com/BelotserkovskiyVA/bot_lite.git
 cd bot_lite/
 pip install -r requirements.txt
+#pip install numpy==1.21.0
 ```
 you may need to install the libopencv-imgcodecs3.2 library
 ```

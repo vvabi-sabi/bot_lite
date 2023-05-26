@@ -157,6 +157,21 @@ https://disk.yandex.ru/d/-lmmiAIZUIrLYA\n \
     def methods_call(self):
         self.next_screen_name = 'StartScreen'
 
+
+class AppDownloadScreen(ScreenBuilder):
+    
+    def __init__(self):
+        super().__init__()
+        text = 'Установите это приложение и размечайте файлы в своём мобильном.'
+        self._front_face = (text, [('Файлы', 'Тренировка')])
+        self.app_path = '/root/yolov5_bot_lite/dialog_manager/app-release.apk'
+    
+    def methods_call(self):
+        self.next_screen_name = 'StartScreen'
+        #bot.send_document(message.chat.id, file_nef)
+        return self.app_path
+
+
 class MenuScreen(ScreenBuilder):
     
     def __init__(self):
