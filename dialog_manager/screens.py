@@ -259,9 +259,15 @@ class DataScreen(ScreenBuilder):
         if GROUP_MODE is True:
             self.user_data.name = bot_utils.random_file_name()
         res = bot_utils.save_file(self.user_data, self.chat_id)
-        data_folder = bot_utils.choose_folder(self.chat_id) # куда сохранять конвертированные картинки/лэйблы
+        try:
+            data_folder = bot_utils.choose_folder(self.chat_id) # куда сохранять конвертированные картинки/лэйблы
+        except:
+            return res
         res = bot_utils.convert_json(self.chat_id, self.user_data.name, data_folder)
-        bot_utils.delete_file(self.chat_id, self.user_data.name)
+        try:
+            bot_utils.delete_file(self.chat_id, self.user_data.name)
+        except:
+            return res
         return res
 
 class PhotoScreen(ScreenBuilder):
