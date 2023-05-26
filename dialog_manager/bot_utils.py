@@ -276,9 +276,15 @@ def save_file(file, path):
     data_dir = os.path.join(PRE_PATH, str(path))
     file_name = file.name
     path_to_save = os.path.join(data_dir, file_name)
-    with open(path_to_save, 'wb') as new_file:
-        new_file.write(file.data)
-    return
+    if client_catalogs_exist(path):
+        try:
+            with open(path_to_save, 'wb') as new_file:
+                new_file.write(file.data)
+            return 'Файл загружен, но не "сконвертирован", возможно, проблема с данными.'
+        except:
+            return 'Файл не был загружен. Попробуйте поменять название файла.'
+    else:
+        return 'Отсутствует директория пользователя. Для правильной работы бота нажмите /start ещё раз.'
 
 def model_scan(path):
     models_name = 'yolov5m_leaky.pt'
