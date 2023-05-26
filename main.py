@@ -69,7 +69,6 @@ def edit_messages(bot, responder, mess):
 
 if __name__ == '__main__':
     bot = telebot.TeleBot(TG_TOKEN)
-    #bot.remove_webhook()
     sm = ScreenManager()
     
     @bot.message_handler(commands=['start'])
