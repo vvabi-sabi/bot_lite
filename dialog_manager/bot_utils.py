@@ -3,6 +3,7 @@ import shutil
 import PIL
 import base64
 import io
+import numpy as np
 import json
 import subprocess
 import telebot
