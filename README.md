@@ -32,8 +32,8 @@ git clone --depth 1 --branch v6.0 https://github.com/ultralytics/yolov5.git
 ```
 cp yolov5m_leaky.pt yolov5/yolov5m_leaky.pt
 ```
-export_insertion.py -> export.py;
-yolo_insertion.py -> yolo.py;
+export_insertion.py -> yolov5/export.py;
+yolo_insertion.py -> yolov5/models/yolo.py;
 ## 5. Start bot
 ```
 python3 main.py
