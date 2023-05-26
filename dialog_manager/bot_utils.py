@@ -130,7 +130,7 @@ class J2Y:
     def __init__(self, project_dir = 'common_project', json_name = 'test.json'):
         self.flag_new_labels = False
         self.project_dir = os.path.join(PRE_PATH, project_dir) #./yolov5_bot_lite/777777
-        self.dataset_dir = os.path.join(PRE_PATH, project_dir, 'dataset') # ./yolov5_bot_lite/777777
+        self.dataset_dir = os.path.join(PRE_PATH, project_dir, 'dataset') # ./yolov5_bot_lite/777777/dataset
         self.json_name = json_name
         self.json = self.load_json(json_name)
     
@@ -142,23 +142,31 @@ class J2Y:
     
     def _save_annot(self, path_to_save): # path_to_save = dataset/train
         self.path_to_save = os.path.join(self.project_dir, path_to_save) #./yolov5_bot_lite/777777, /dataset/train
-        self.json_to_img()
-        self.json_to_labels()
-        self.save_yaml_config()
-        return
+        _break, res = self.json_to_img()
+        if _break:
+            return res
+        _break, res = self.json_to_labels()
+        if _break:
+            return res
+        _break, res = self.save_yaml_config()
+        if _break:
+            return res
+        res = f'Файл: {self.json_name} сохранен.'
+        return res
     
     def json_to_img(self):
         img_name = self.json_name[:-5] + '.png'
         path_to_save = os.path.join(self.path_to_save, 'images', img_name)
-        img_b64 = self.json['imageData']
-        img_data = base64.b64decode(img_b64) 
-        f = io.BytesIO()
-        f.write(img_data)
-        img_pil = PIL.Image.open(f)
         try:
+            img_b64 = self.json['imageData']
+            img_data = base64.b64decode(img_b64) 
+            f = io.BytesIO()
+            f.write(img_data)
+            img_pil = PIL.Image.open(f)
             img_pil.save(path_to_save)
+            return False, 'Изображение сохранено, label.txt - ещё нет.'
         except:
-            print('no save')
+            return True, 'Возникли проблемы с сохранением изображения. Проверьте json "imageData".'
     
     def json_to_labels(self): # load_json, path_to_labels):
         lbl_name = self.json_name[:-5] + '.txt'
@@ -170,9 +178,13 @@ class J2Y:
             labels_data = self.poligon_to_box(labels_list)
         
         path_to_labels = os.path.join(self.path_to_save, 'labels', lbl_name)
-        with open(path_to_labels, 'w') as label_file:
-            label_file.write(labels_data)
         self.labels_list = labels_list
+        try:
+            with open(path_to_labels, 'w') as label_file:
+                label_file.write(labels_data)
+            return False, 'Файл аннотаций (label.txt) сохранен.'
+        except:
+            return True, 'Файл аннотаций (label.txt) НЕ сохранен! Проверьте данные.'
     
     def get_labels(self, labels_set):
         labels_list = list(labels_set)
@@ -227,8 +239,12 @@ class J2Y:
                 class_number+\
                 class_name
         path_to_config = self.dataset_dir + '/custom.yaml'
-        with open(path_to_config, 'w') as config_file:
-            config_file.write(head)
+        try:
+            with open(path_to_config, 'w') as config_file:
+                config_file.write(head)
+            return False, 'Конфигурационный файл сохранен.'
+        except:
+            return True, 'Конфигурационный файл НЕ был сохранен!'
         
 
 def client_catalogs_exist(path):
@@ -321,8 +337,8 @@ def choose_folder(path):
 
 def convert_json(proj_path, file_name, path_to_save): # path_to_save = 'dataset/train'
     j2y = J2Y(str(proj_path), file_name)
-    j2y._save_annot(path_to_save)
-    result = f'Файл: {file_name} сохранен.'
+    result = j2y._save_annot(path_to_save)
+    #result = f'Файл: {file_name} сохранен.'
     if j2y.flag_new_labels is True:
         result = result + f'\nДобавлены новые классы: {j2y.labels_list}'
     return result
