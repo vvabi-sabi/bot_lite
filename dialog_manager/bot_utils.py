@@ -262,6 +262,16 @@ def get_files_list(path):
     
     return text
 
+def random_file_name():
+    alphabet = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789'
+    alphabet = [symb for symb in alphabet]
+    new_name = np.random.choice(alphabet, size=(1,9), replace = True)
+    new_name = list(new_name[0])
+    new_name.append('.json')
+    new_name = ''.join(new_name)
+    return new_name
+
+
 def save_file(file, path):
     data_dir = os.path.join(PRE_PATH, str(path))
     file_name = file.name

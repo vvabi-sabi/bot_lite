@@ -256,6 +256,8 @@ class DataScreen(ScreenBuilder):
     def methods_call(self):
         if isinstance(self.user_data, str):
             return
+        if GROUP_MODE is True:
+            self.user_data.name = bot_utils.random_file_name()
         bot_utils.save_file(self.user_data, self.chat_id)
         data_folder = bot_utils.choose_folder(self.chat_id) # куда сохранять конвертированные картинки/лэйблы
         res = bot_utils.convert_json(self.chat_id, self.user_data.name, data_folder)
