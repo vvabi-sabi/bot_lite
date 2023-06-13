@@ -8,7 +8,7 @@ https://t.me/yolov5m_bot
 # Install instruction
 ## 1. Install the Telegram-YOLO
 ```
-git clone https://github.com/BelotserkovskiyVA/bot_lite.git
+git clone https://github.com/vvabi-sabi/bot_lite.git
 cd bot_lite/
 pip install -r requirements.txt
 #pip install numpy==1.21.0
